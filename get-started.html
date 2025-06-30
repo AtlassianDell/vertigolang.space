@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vertigo - Get Started</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --primary-bg: #ffffff;
+                --secondary-bg: #f8f8f8;
+                --text-dark: #333333;
+                --heading-dark: #343434;
+                --accent-grey: #666666;
+                --link-color: #555555;
+                --code-bg: #f0f0f0;
+                --code-text: #343434;
+                --logo-brackets-color: #ffd43b;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: var(--primary-bg);
+                color: var(--text-dark);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* --- Top Navigation Bar --- */
+            .navbar {
+                background-color: var(--secondary-bg);
+                padding: 15px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border-light);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .navbar .logo {
+                font-family: "Roboto", sans-serif;
+                font-size: 1.8em;
+                font-weight: 700;
+                color: var(--heading-dark);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                height: 40px;
+            }
+
+            .navbar .logo img {
+                height: 100%;
+                width: auto;
+            }
+
+            /* Removed .navbar .logo::before rule */
+
+            .navbar .nav-links {
+                display: flex;
+                gap: 30px;
+            }
+
+            .navbar .nav-links a {
+                color: var(--text-dark);
+                text-decoration: none;
+                font-size: 1.05em;
+                font-weight: 500;
+                padding: 5px 0;
+                position: relative;
+                transition: color 0.2s ease-in-out;
+            }
+
+            .navbar .nav-links a:hover {
+                color: var(--heading-dark);
+            }
+
+            .navbar .nav-links a.active {
+                color: var(--heading-dark);
+            }
+
+            .navbar .nav-links a.active::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: var(--heading-dark);
+                bottom: -5px;
+                left: 0;
+                border-radius: 1px;
+            }
+
+            /* --- Global Layout & Typography --- */
+            .section-wrapper {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 60px 20px;
+                box-sizing: border-box;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-family: "Roboto", sans-serif;
+                color: var(--heading-dark);
+                font-weight: 700;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 2.8em;
+                margin-top: 40px;
+                margin-bottom: 25px;
+                position: relative;
+                padding-bottom: 8px;
+                border-bottom: 2px solid var(--accent-grey);
+                color: var(--heading-dark);
+            }
+
+            h3 {
+                font-size: 1.8em;
+                color: var(--heading-dark);
+                margin-top: 35px;
+                margin-bottom: 15px;
+                font-weight: 500;
+            }
+
+            p {
+                font-size: 1.05em;
+                margin-bottom: 15px;
+                color: var(--text-dark);
+            }
+
+            strong,
+            .highlight {
+                color: var(--heading-dark);
+                font-weight: 500;
+            }
+
+            a {
+                color: var(--link-color);
+                text-decoration: none;
+                transition: color 0.2s ease-in-out;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* --- Specific Section Styles --- */
+            .section-get-started {
+                background-color: var(--primary-bg);
+            }
+
+            .section-get-started pre {
+                background-color: var(--code-bg);
+                padding: 20px;
+                border-radius: 8px;
+                overflow-x: auto;
+                font-family: "Consolas", "Menlo", monospace;
+                font-size: 0.95em;
+                color: var(--code-text);
+                line-height: 1.5;
+                tab-size: 4;
+                -moz-tab-size: 4;
+                border: 1px solid var(--border-light);
+                margin-bottom: 25px;
+            }
+
+            .section-get-started code {
+                color: var(--code-text);
+                background-color: rgba(0, 0, 0, 0.05);
+                padding: 2px 5px;
+                border-radius: 3px;
+            }
+
+            .code-explanation {
+                font-size: 1em;
+                background-color: var(--secondary-bg);
+                padding: 20px;
+                border-left: 5px solid var(--accent-grey);
+                border-radius: 8px;
+                margin-bottom: 25px;
+                color: var(--text-dark);
+            }
+
+            .code-explanation h4 {
+                color: var(--heading-dark);
+                margin-top: 0;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+                font-weight: 500;
+            }
+
+            .code-explanation ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .code-explanation ul li {
+                margin-bottom: 8px;
+                padding-left: 20px;
+                position: relative;
+            }
+
+            .code-explanation ul li::before {
+                content: "›";
+                color: var(--link-color);
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+
+            footer {
+                text-align: center;
+                padding: 40px 20px;
+                background-color: var(--secondary-bg);
+                border-top: 1px solid var(--border-light);
+                color: var(--text-dark);
+                font-size: 0.9em;
+                margin-top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Vertigo Language Logo" />
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="get-started.html" class="active">Get Started</a>
+                <a href="reference.html">Reference</a>
+                <a href="downloads.html">Downloads</a>
+            </div>
+        </nav>
+
+        <div class="section-wrapper section-get-started">
+            <h2>Getting Started</h2>
+            <p>
+                To begin your journey with Vertigo, you'll need the Vertigo
+                executable. Vertigo programs are written in plain text files,
+                typically saved with a
+                <span class="highlight"><code>.vtgo</code></span> extension.
+            </p>
+            <h3>1. Obtain Vertigo and dizzypack</h3>
+            <p>
+                Vertigo is distributed as a standalone executable (<code
+                    >vertigo.exe</code
+                >
+                on Windows), compiled using PyInstaller. For managing Vertigo
+                and its libraries, we provide
+                <span class="highlight">dizzypack</span>, a simple command-line
+                package manager, also distributed as an executable
+                (<code>dizzypack.exe</code>).
+            </p>
+            <p>
+                Visit the <a href="downloads.html">Downloads page</a> to get the
+                latest versions of <code>vertigo.exe</code> and
+                <code>dizzypack.exe</code>.
+            </p>
+
+            <h3>2. Set up your Environment (Recommended)</h3>
+            <p>
+                For ease of use, it's highly recommended to add the directory
+                containing <code>vertigo.exe</code> and
+                <code>dizzypack.exe</code> to your system's PATH environment
+                variable. This allows you to run both commands from any
+                directory in your terminal or command prompt.
+            </p>
+            <p>
+                <em
+                    >(Instructions for adding to PATH vary by operating system.
+                    A quick web search for "how to add to PATH [your OS]" will
+                    provide detailed steps.)</em
+                >
+            </p>
+
+            <h3>3. Install Libraries with dizzypack</h3>
+            <p>
+                Once `dizzypack.exe` is set up, you can use it to install
+                external Vertigo libraries or Python modules that Vertigo can
+                import.
+            </p>
+            <h4>Example: Installing a Library (e.g., `amath`)</h4>
+            <p>
+                Open your terminal/command prompt and run:
+                <br />
+                <code>dizzypack amath</code>
+            </p>
+            <p>
+                This command will download the `amath.py` module into the `libs`
+                directory located alongside your `vertigo.exe` and
+                `dizzypack.exe`. You can then use the `IMPORT "amath"`
+                instruction in your Vertigo code to utilize it.
+            </p>
+            <h4>Updating Vertigo:</h4>
+            <p>
+                To update your Vertigo interpreter to the latest version, use:
+                <br />
+                <code>dizzypack update</code>
+            </p>
+            <p>
+                This command will download the newest `vertigo.exe` and replace
+                your current one, creating a backup of the old version.
+            </p>
+
+            <h3>4. Your First Vertigo Program: Hello World</h3>
+            <p>
+                Let's create a simple "Hello, World!" program to demonstrate the
+                basic syntax and execution flow in Vertigo.
+            </p>
+            <pre>
+; Initialize a new stack named 'main_stack' for our primary operations
+NEW main_stack
+
+; Set 'main_stack' as the currently active stack
+main_stack
+
+; Push the classic greeting string onto the top of the stack
+PUSH "Hello, World!"
+
+; Transfer the value from the top of the stack into the Output Data Accumulator (ODA) register
+POP ODA
+        </pre
+            >
+            <div class="code-explanation">
+                <h4>Code Breakdown:</h4>
+                <ul>
+                    <li>
+                        <strong><code>NEW main_stack</code></strong
+                        >: Creates a new, empty stack named `main_stack`.
+                        Vertigo heavily relies on stacks for data manipulation.
+                    </li>
+                    <li>
+                        <strong><code>main_stack</code></strong
+                        >: This line simply selects `main_stack` as the
+                        currently active stack. Subsequent stack operations will
+                        apply to this stack.
+                    </li>
+                    <li>
+                        <strong><code>PUSH "Hello, World!"</code></strong
+                        >: Places the string literal "Hello, World!" onto the
+                        top of `main_stack`.
+                    </li>
+                    <li>
+                        <strong><code>POP ODA</code></strong
+                        >: Takes the value from the top of the current stack
+                        (`"Hello, World!"`) and moves it into the special `ODA`
+                        (Output Data Accumulator) register. When a value is
+                        placed into `ODA` (and the `intpr` setting is `FALSE`,
+                        which is the default), Vertigo will automatically print
+                        its content to the console at the end of the current
+                        instruction's execution.
+                    </li>
+                </ul>
+            </div>
+            <h4>Regarding `INT` instructions:</h4>
+            <p>
+                While `INT` instructions exist in Vertigo, they are for
+                specific, low-level interactions or interrupt handlers. They are
+                generally not needed for basic program output or normal program
+                termination.
+            </p>
+            <ul>
+                <li>
+                    <strong><code>INT 0x0</code></strong
+                    >: This interrupt is designed for situations where you need
+                    to explicitly exit the program prematurely, for instance,
+                    due to an error condition or a specific control flow
+                    requirement. For a typical program's natural end, it's not
+                    required.
+                </li>
+                <li>
+                    <strong><code>INT 0x1</code></strong
+                    >: This interrupt's primary function is to print the
+                    contents of the `ODA` register, but only when the
+                    interpreter's internal `intpr` setting is explicitly set to
+                    `TRUE`. This provides a controlled way to print if default
+                    `ODA` printing behavior is altered or when `intpr` mode is
+                    desired. In standard operation (with `intpr` as `FALSE`),
+                    simply placing a value into `ODA` will print it.
+                </li>
+            </ul>
+
+            <h3>5. Running Your Program</h3>
+            <p>
+                Save the code snippet above as `hello.vtgo` in the same
+                directory as your `vertigo.exe` executable. Then, open your
+                terminal or command prompt, navigate to that directory, and
+                execute the program using the following command:
+            </p>
+            <p>
+                <code>vertigo hello.vtgo</code>
+            </p>
+            <p>You should see "Hello, World!" printed to your console!</p>
+            <p>
+                You're now ready to explore more of Vertigo's powerful
+                instructions and build more complex programs. Check out the
+                <a href="reference.html">Instruction Reference</a> for a full
+                list of commands.
+            </p>
+        </div>
+
+        <footer>
+            <p>Vertigo Language Project</p>
+        </footer>
+    </body>
+</html>

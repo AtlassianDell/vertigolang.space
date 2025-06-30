@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vertigo - Downloads</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --primary-bg: #ffffff;
+                --secondary-bg: #f8f8f8;
+                --text-dark: #333333;
+                --heading-dark: #343434;
+                --accent-grey: #666666;
+                --link-color: #555555;
+                --code-bg: #f0f0f0;
+                --code-text: #343434;
+                --logo-brackets-color: #ffd43b;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: var(--primary-bg);
+                color: var(--text-dark);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* --- Top Navigation Bar --- */
+            .navbar {
+                background-color: var(--secondary-bg);
+                padding: 15px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border-light);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .navbar .logo {
+                font-family: "Roboto", sans-serif;
+                font-size: 1.8em;
+                font-weight: 700;
+                color: var(--heading-dark);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                height: 40px;
+            }
+
+            .navbar .logo img {
+                height: 100%;
+                width: auto;
+            }
+
+            /* Removed .navbar .logo::before rule */
+
+            .navbar .nav-links {
+                display: flex;
+                gap: 30px;
+            }
+
+            .navbar .nav-links a {
+                color: var(--text-dark);
+                text-decoration: none;
+                font-size: 1.05em;
+                font-weight: 500;
+                padding: 5px 0;
+                position: relative;
+                transition: color 0.2s ease-in-out;
+            }
+
+            .navbar .nav-links a:hover {
+                color: var(--heading-dark);
+            }
+
+            .navbar .nav-links a.active {
+                color: var(--heading-dark);
+            }
+
+            .navbar .nav-links a.active::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: var(--heading-dark);
+                bottom: -5px;
+                left: 0;
+                border-radius: 1px;
+            }
+
+            /* --- Global Layout & Typography --- */
+            .section-wrapper {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 60px 20px;
+                box-sizing: border-box;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-family: "Roboto", sans-serif;
+                color: var(--heading-dark);
+                font-weight: 700;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 2.8em;
+                margin-top: 40px;
+                margin-bottom: 25px;
+                position: relative;
+                padding-bottom: 8px;
+                border-bottom: 2px solid var(--accent-grey);
+                color: var(--heading-dark);
+            }
+
+            h3 {
+                font-size: 1.8em;
+                color: var(--heading-dark);
+                margin-top: 35px;
+                margin-bottom: 15px;
+                font-weight: 500;
+            }
+
+            p {
+                font-size: 1.05em;
+                margin-bottom: 15px;
+                color: var(--text-dark);
+            }
+
+            strong,
+            .highlight {
+                color: var(--heading-dark);
+                font-weight: 500;
+            }
+
+            a {
+                color: var(--link-color);
+                text-decoration: none;
+                transition: color 0.2s ease-in-out;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* --- Specific Section Styles --- */
+            .download-item {
+                background-color: var(--secondary-bg);
+                padding: 25px;
+                border-radius: 8px;
+                border: 1px solid var(--border-light);
+                margin-bottom: 25px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .download-item h3 {
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+
+            .download-link {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: var(--heading-dark);
+                color: white;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.2s ease;
+            }
+
+            .download-link:hover {
+                background-color: #555555;
+                text-decoration: none;
+            }
+
+            .download-instructions ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .download-instructions ul li {
+                margin-bottom: 8px;
+                padding-left: 20px;
+                position: relative;
+            }
+
+            .download-instructions ul li::before {
+                content: "›";
+                color: var(--link-color);
+                position: absolute;
+                left: 0;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+
+            .versioning-note {
+                font-size: 0.95em;
+                color: var(--text-dark);
+                margin-top: 20px;
+                padding: 15px;
+                background-color: var(--secondary-bg);
+                border: 1px solid var(--border-light);
+                border-radius: 8px;
+            }
+
+            footer {
+                text-align: center;
+                padding: 40px 20px;
+                background-color: var(--secondary-bg);
+                border-top: 1px solid var(--border-light);
+                color: var(--text-dark);
+                font-size: 0.9em;
+                margin-top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Vertigo Language Logo" />
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="get-started.html">Get Started</a>
+                <a href="reference.html">Reference</a>
+                <a href="downloads.html" class="active">Downloads</a>
+            </div>
+        </nav>
+
+        <div class="section-wrapper">
+            <h2>Downloads</h2>
+            <p>
+                Get the latest versions of the Vertigo executable and the
+                dizzypack package manager here. Both are bundled together in
+                convenient `.zip` archives.
+            </p>
+
+            <div class="download-item">
+                <h3>Vertigo for Windows (x86)</h3>
+                <p>
+                    Includes <code>vertigo.exe</code> (the interpreter) and
+                    <code>dizzypack.exe</code> (the package manager) for Windows
+                    systems.
+                </p>
+                <p>
+                    <strong>Contents:</strong> <code>vertigo.exe</code>,
+                    <code>dizzypack.exe</code>, and the
+                    <code>libs/</code> directory.
+                </p>
+                <a
+                    href="https://github.com/AtlassianDell/vertigo/releases/latest/download/vertigowin.zip"
+                    class="download-link"
+                    target="_blank"
+                    >Download vertigowin.zip</a
+                >
+            </div>
+
+            <div class="download-item">
+                <h3>Vertigo for Linux (x86 - compiled with WSL)</h3>
+                <p>
+                    Includes the Vertigo interpreter and dizzypack for Linux x86
+                    systems (compiled using WSL for compatibility).
+                </p>
+                <p>
+                    <strong>Contents:</strong> <code>vertigo</code> executable,
+                    <code>dizzypack</code> executable, and the
+                    <code>libs/</code> directory.
+                </p>
+                <a
+                    href="https://github.com/AtlassianDell/vertigo/releases/latest/download/vertigolin.zip"
+                    class="download-link"
+                    target="_blank"
+                    >Download vertigolin.zip</a
+                >
+            </div>
+
+            <div class="versioning-note">
+                <h3>Versioning System (VertigoMaj#Min)</h3>
+                <p>
+                    Vertigo releases follow a
+                    <code>VertigoMaj#Min</code> numbering system, where:
+                </p>
+                <ul>
+                    <li>
+                        <code>Maj</code> indicates a major update with
+                        significant new features or breaking changes.
+                    </li>
+                    <li>
+                        <code>Min</code> indicates a minor update or hotfix,
+                        containing bug fixes or small improvements.
+                    </li>
+                </ul>
+                <p>
+                    For example, <code>Vertigo2#2</code> would signify the
+                    second major version with its second minor update. The
+                    download links above always point to the
+                    <a
+                        href="https://github.com/AtlassianDell/vertigo/releases/latest"
+                        target="_blank"
+                        >latest release on GitHub</a
+                    >, so you'll always get the most current
+                    <code>Maj#Min</code> available.
+                </p>
+            </div>
+
+            <h3>Initial Setup Instructions</h3>
+            <p>
+                After downloading your chosen `.zip` file, follow these steps to
+                get started:
+            </p>
+            <div class="download-instructions">
+                <ul>
+                    <li>
+                        Extract the contents of the `.zip` file to a dedicated
+                        folder for Vertigo (e.g., <code>C:\Vertigo</code> on
+                        Windows, or <code>~/vertigo</code> on Linux).
+                    </li>
+                    <li>
+                        This folder will contain <code>vertigo.exe</code> (or
+                        <code>vertigo</code>) and <code>dizzypack.exe</code> (or
+                        <code>dizzypack</code>), along with the
+                        <code>libs/</code> directory.
+                    </li>
+                    <li>
+                        <strong
+                            >Add the Vertigo folder to your System PATH:</strong
+                        >
+                        This crucial step allows you to run
+                        <code>vertigo</code> and <code>dizzypack</code> commands
+                        from any directory in your terminal or command prompt.
+                        (Search online for "how to add to PATH on [your
+                        operating system]" for detailed instructions.)
+                    </li>
+                    <li>
+                        Restart your terminal/command prompt after modifying the
+                        PATH to ensure changes take effect.
+                    </li>
+                </ul>
+            </div>
+            <p>
+                Once set up, you can start writing your
+                <code>.vtgo</code> programs and managing libraries. Refer to the
+                <a href="get-started.html">Get Started</a> page for your first
+                program!
+            </p>
+        </div>
+
+        <footer>
+            <p>Vertigo Language Project</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vertigo - Features</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --primary-bg: #ffffff;
+                --secondary-bg: #f8f8f8;
+                --text-dark: #333333;
+                --heading-dark: #343434;
+                --accent-grey: #666666;
+                --link-color: #555555;
+                --code-bg: #f0f0f0;
+                --code-text: #343434;
+                /* --logo-brackets-color: #FFD43B; No longer used */
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Roboto", sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: var(--primary-bg);
+                color: var(--text-dark);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* --- Top Navigation Bar --- */
+            .navbar {
+                background-color: var(--secondary-bg);
+                padding: 15px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border-light);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .navbar .logo {
+                font-family: "Roboto", sans-serif;
+                font-size: 1.8em;
+                font-weight: 700;
+                color: var(--heading-dark);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                height: 40px;
+            }
+
+            .navbar .logo img {
+                height: 100%;
+                width: auto;
+            }
+
+            /* Removed .navbar .logo::before rule */
+
+            .navbar .nav-links {
+                display: flex;
+                gap: 30px;
+            }
+
+            .navbar .nav-links a {
+                color: var(--text-dark);
+                text-decoration: none;
+                font-size: 1.05em;
+                font-weight: 500;
+                padding: 5px 0;
+                position: relative;
+                transition: color 0.2s ease-in-out;
+            }
+
+            .navbar .nav-links a:hover {
+                color: var(--heading-dark);
+            }
+
+            .navbar .nav-links a.active {
+                color: var(--heading-dark);
+            }
+
+            .navbar .nav-links a.active::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: var(--heading-dark);
+                bottom: -5px;
+                left: 0;
+                border-radius: 1px;
+            }
+
+            /* --- Global Layout & Typography --- */
+            .section-wrapper {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 60px 20px;
+                box-sizing: border-box;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-family: "Roboto", sans-serif;
+                color: var(--heading-dark);
+                font-weight: 700;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 2.8em;
+                margin-top: 40px;
+                margin-bottom: 25px;
+                position: relative;
+                padding-bottom: 8px;
+                border-bottom: 2px solid var(--accent-grey);
+                color: var(--heading-dark);
+            }
+
+            h3 {
+                font-size: 1.8em;
+                color: var(--heading-dark);
+                margin-top: 35px;
+                margin-bottom: 15px;
+                font-weight: 500;
+            }
+
+            p {
+                font-size: 1.05em;
+                margin-bottom: 15px;
+                color: var(--text-dark);
+            }
+
+            strong,
+            .highlight {
+                color: var(--heading-dark);
+                font-weight: 500;
+            }
+
+            a {
+                color: var(--link-color);
+                text-decoration: none;
+                transition: color 0.2s ease-in-out;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            /* --- Specific Section Styles --- */
+            .section-features ul {
+                list-style: none;
+                padding: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+            }
+
+            .section-features ul li {
+                background-color: var(--secondary-bg);
+                padding: 25px;
+                border-radius: 8px;
+                border: 1px solid var(--border-light);
+                transition: transform 0.2s ease;
+            }
+
+            .section-features ul li:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .section-features ul li strong {
+                display: block;
+                font-size: 1.3em;
+                margin-bottom: 10px;
+                color: var(--heading-dark);
+            }
+
+            .section-features ul li p {
+                font-size: 1em;
+                color: var(--text-dark);
+                margin-bottom: 0;
+            }
+
+            footer {
+                text-align: center;
+                padding: 40px 20px;
+                background-color: var(--secondary-bg);
+                border-top: 1px solid var(--border-light);
+                color: var(--text-dark);
+                font-size: 0.9em;
+                margin-top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Vertigo Language Logo" />
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html" class="active">Features</a>
+                <a href="get-started.html">Get Started</a>
+                <a href="reference.html">Reference</a>
+                <a href="downloads.html">Downloads</a>
+            </div>
+        </nav>
+
+        <div class="section-wrapper">
+            <h2>Core Capabilities</h2>
+            <p>
+                Vertigo is built with a powerful and explicit feature set,
+                giving developers unparalleled control and clarity.
+            </p>
+            <ul>
+                <li>
+                    <strong>Dynamic Stacks</strong>
+                    <p>
+                        Create and manage multiple, independent data stacks,
+                        offering unparalleled flexibility in how your program
+                        handles information. This allows for complex data
+                        structures and efficient memory use.
+                    </p>
+                </li>
+                <li>
+                    <strong>Dedicated Registers</strong>
+                    <p>
+                        Leverage explicit registers like
+                        <code>ODA</code> (Output Data Accumulator),
+                        <code>IDA</code> (Input Data Accumulator),
+                        <code>CLI</code> (Current Loop Iteration), and
+                        <code>LTM</code> (Loop Termination Max) for direct data
+                        access and fine-grained control over program state.
+                    </p>
+                </li>
+                <li>
+                    <strong>Precise Flow Control</strong>
+                    <p>
+                        Navigate your code with ultimate precision using named
+                        labels and a robust set of conditional jump
+                        instructions. This includes <code>JUMPEQ</code> (Jump if
+                        Equal), <code>JUMPGT</code> (Jump if Greater Than),
+                        <code>JUMPLT</code> (Jump if Less Than), and
+                        <code>JUMPNEQ</code> (Jump if Not Equal), allowing for
+                        complex branching logic.
+                    </p>
+                </li>
+                <li>
+                    <strong>Comprehensive Data Operations</strong>
+                    <p>
+                        Seamlessly perform a wide range of operations on both
+                        numerical and string data. This includes arithmetic
+                        functions (<code>MATH</code>), string concatenation
+                        (<code>CONCAT</code>), calculating string lengths
+                        (<code>STRLEN</code>), and robust string comparisons
+                        (<code>STRCMP</code>).
+                    </p>
+                </li>
+                <li>
+                    <strong>Modular Subroutines</strong>
+                    <p>
+                        Enhance code reusability and maintainability by
+                        organizing your logic into easily callable subroutines.
+                        This promotes clean, structured programming practices.
+                    </p>
+                </li>
+                <li>
+                    <strong>External Integration</strong>
+                    <p>
+                        Expand your projects by importing external Vertigo
+                        libraries using the <code>BRING</code> instruction, or
+                        integrate directly with existing Python functionalities
+                        using the <code>IMPORT</code> instruction for broader
+                        capabilities. These libraries are conveniently managed
+                        via <a href="downloads.html">dizzypack</a>.
+                    </p>
+                </li>
+                <li>
+                    <strong>Immutable Constants</strong>
+                    <p>
+                        Define values using the <code>IM</code> instruction that
+                        are guaranteed to remain constant throughout your
+                        program's execution, ensuring data integrity and
+                        predictable behavior.
+                    </p>
+                </li>
+                <li>
+                    <strong>System Interactions</strong>
+                    <p>
+                        Interface directly with the operating environment and
+                        hardware through predefined system interrupts
+                        (<code>INT</code>). This provides low-level access for
+                        specialized tasks and system control.
+                    </p>
+                </li>
+                <li>
+                    <strong>Stack Manipulation</strong>
+                    <p>
+                        Advanced stack manipulation instructions like
+                        <code>SWAP</code> (swap top two items),
+                        <code>PICK</code> (duplicate an item from deeper in the
+                        stack), <code>PPICK</code> (duplicate and remove
+                        original), <code>CLEAR</code> (empty stack),
+                        <code>ROT</code> (rotate top three items), and
+                        <code>RROT</code> (reverse rotate) provide powerful data
+                        rearrangement capabilities.
+                    </p>
+                </li>
+                <li>
+                    <strong>Logical Operations (OPS)</strong>
+                    <p>
+                        Perform boolean logic with the
+                        <code>OPS</code> instruction, supporting operations like
+                        <code>AND</code>, <code>OR</code>, <code>NOT</code>,
+                        <code>EQUAL</code>, and <code>NEQUAL</code> for complex
+                        conditional evaluations.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>Vertigo Language Project</p>
+        </footer>
+    </body>
+</html>
